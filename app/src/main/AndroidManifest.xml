@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Taskkly">
+
+        <!-- Splash -->
+        <activity
+            android:name=".ui.auth.SplashAuthActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Taskkly.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Auth -->
+        <activity android:name=".ui.auth.LoginActivity" android:exported="false" />
+        <activity android:name=".ui.auth.RegisterActivity" android:exported="false" />
+        <activity android:name=".ui.auth.PhoneAuthActivity" android:exported="false" />
+
+        <!-- Homes -->
+        <activity
+            android:name=".ui.home.ClientHomeActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
+
+        <activity
+            android:name=".ui.home.ProviderHomeActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
+
+        <!-- Client screens -->
+        <activity
+            android:name=".ui.home.client.post.PostTaskActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.home.client.task.ClientTaskDetailsActivity"
+            android:exported="false" />
+
+        <!-- Provider screens -->
+        <activity
+            android:name=".ui.home.provider.task.ProviderTaskDetailsActivity"
+            android:exported="false" />
+
+        <!-- ✅ Payments -->
+        <activity
+            android:name=".ui.payments.PaymentActivity"
+            android:exported="false" />
+
+
+        <activity
+            android:name=".ui.common.profile.EditProfileActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.common.archive.ArchiveActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.common.settings.NotificationsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.common.settings.ChangePasswordActivity"
+            android:exported="false" />
+
+        <!-- Messages -->
+        <activity
+            android:name=".ui.messages.ChatActivity"
+            android:exported="false" />
+
+    </application>
+</manifest>

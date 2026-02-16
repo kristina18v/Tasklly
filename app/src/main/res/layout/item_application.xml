@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:background="@drawable/bg_card_white"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- TOP ROW -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/imgProvider"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:src="@drawable/ic_profile"
+            android:background="@drawable/bg_avatar_circle"
+            android:padding="8dp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvProvider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Provider Name"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#111827" />
+
+            <TextView
+                android:id="@+id/tvInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="€25 • Pending"
+                android:textSize="13sp"
+                android:textColor="#6B7280" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_badge_soft"
+            android:padding="6dp"
+            android:text="PENDING"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:textColor="@color/blue_primary" />
+    </LinearLayout>
+
+    <!-- MESSAGE TEXT -->
+    <TextView
+        android:id="@+id/tvMsg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="I can do this task tomorrow."
+        android:textSize="14sp"
+        android:textColor="#374151" />
+
+    <!-- ACTIONS -->
+    <LinearLayout
+        android:id="@+id/actions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAccept"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="Accept"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            app:cornerRadius="14dp"
+            app:backgroundTint="@color/blue_primary" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDecline"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:text="Decline"
+            android:textAllCaps="false"
+            android:textColor="@color/blue_primary"
+            app:cornerRadius="14dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/outline_blue"
+            app:backgroundTint="@android:color/transparent" />
+
+        <!-- ✅ MESSAGE BUTTON (НОВО) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:text="Message"
+            android:textAllCaps="false"
+            android:textColor="@color/blue_primary"
+            app:cornerRadius="14dp"
+            app:strokeWidth="1dp"
+            app:strokeColor="@color/outline_blue"
+            app:backgroundTint="@android:color/transparent" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <!-- Bottom nav: blue when selected, gray when not -->
+
+
+    <color name="nav_active">#2563EB</color>
+    <color name="nav_inactive">#9CA3AF</color>
+    <color name="primary_blue">#3B82F6</color>
+    <color name="primary_blue_dark">#1D4ED8</color>
+    <color name="outline_blue">#BFDBFE</color>
+    <color name="background">#F7F7FB</color>
+
+    <color name="card_bg">#FFFFFFFF</color>
+    <color name="screen_bg">#F7F7FB</color>
+
+    <color name="blue_primary">#6EC6FF</color>
+    <color name="blue_ripple">#402F6BFF</color>
+    <color name="bottom_nav_indicator">#E6E0FF</color> <!-- light purple/blue -->
+    <color name="bottom_nav_ripple">#22000000</color>  <!-- ripple -->
+    <color name="bottom_nav_active">#2563EB</color>    <!-- blue активна -->
+    <color name="bottom_nav_inactive">#9CA3AF</color>  <!-- сива неактивна -->
+    <color name="app_bg">#F7F7FB</color>
+
+    <color name="text_primary">#111827</color>
+    <color name="text_secondary">#6B7280</color>
+    <color name="primary">#0F766E</color>
+
+
+</resources>
