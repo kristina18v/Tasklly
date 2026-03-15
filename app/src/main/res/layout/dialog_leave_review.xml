@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rate this provider"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="#111827"/>
+
+    <RatingBar
+        android:id="@+id/rbLeave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="1.0"
+        android:rating="5"
+        android:layout_marginTop="10dp"
+        android:progressTint="#FACC15"
+        android:secondaryProgressTint="#FACC15"
+        android:backgroundTint="#E5E7EB"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etComment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Write a comment (optional)"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>

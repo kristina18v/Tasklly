@@ -30,22 +30,24 @@ class ProviderMyApplicationsFragment : Fragment(R.layout.fragment_list) {
 
         adapter = ApplicationsAdapter(
             items = items,
-            showActions = false,     // provider само гледа, не прифаќа/одбива тука
+            showActions = false,   // provider не прифаќа/одбива
             onAccept = {},
             onDecline = {},
             onMessage = { app ->
-                // ✅ PROVIDER -> CLIENT MESSAGE
-                // мора да имаш clientId во Application (ако немаш, кажи ми и ќе ти средам структура)
+                // PROVIDER -> CLIENT MESSAGE
                 val otherUid = app.clientId
-                if (otherUid.isNullOrBlank()) return@ApplicationsAdapter
+                if (otherUid.isBlank()) return@ApplicationsAdapter
 
-                val otherName = app.clientName?.ifBlank { "Client" } ?: "Client"
+                val otherName = app.clientName.ifBlank { "Client" }
 
                 startActivity(
                     Intent(requireContext(), ChatActivity::class.java)
                         .putExtra("otherUid", otherUid)
                         .putExtra("otherName", otherName)
                 )
+            },
+            onViewReviews = {
+                // ❌ provider НЕ гледа reviews овде
             }
         )
 

@@ -20,9 +20,15 @@ class TasksAdapter(
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         val t = items[position]
+
         holder.b.tvTitle.text = t.title
-        holder.b.tvMeta.text = "${t.category} • ${t.location} • ${t.status}"
-        holder.b.root.setOnClickListener { onClick(t) }
+        holder.b.tvCategory.text = t.category
+        holder.b.tvLocation.text = t.location
+        holder.b.tvStatus.text = t.status
+
+        holder.b.root.setOnClickListener {
+            onClick(t)
+        }
     }
 
     override fun getItemCount() = items.size

@@ -1,6 +1,7 @@
 package com.example.tasklly.ui.common.archive
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,65 +17,94 @@ class ArchiveActivity : BaseActivity() {
     private val db by lazy { FirebaseDatabase.getInstance().reference }
 
     private lateinit var adapter: ArchiveAdapter
-    private val items = mutableListOf<Pair<Task, String>>() // task + otherName
+    private val items = mutableListOf<Pair<Task, String>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_archive)
 
         val mode = intent.getStringExtra("mode") ?: "client"
+        val uid = auth.currentUser?.uid
+
+        Log.d("ARCHIVE", "mode=$mode uid=$uid")
+
         findViewById<TextView>(R.id.tvTitle).text =
             if (mode == "client") "Archive (Client)" else "Archive (Provider)"
 
         val rv = findViewById<RecyclerView>(R.id.rvArchive)
         rv.layoutManager = LinearLayoutManager(this)
+
         adapter = ArchiveAdapter(mode, items)
         rv.adapter = adapter
 
+        loadArchive(mode)
+    }
+
+    private fun loadArchive(mode: String) {
         val uid = auth.currentUser?.uid ?: return
 
-        // 1) земи листа на completed taskIds
-        db.child("history").child(uid).child("completed")
-            .get()
+        db.child("tasks").get()
             .addOnSuccessListener { snap ->
-                val ids = snap.children.mapNotNull { it.key }
-                if (ids.isEmpty()) return@addOnSuccessListener
+                items.clear()
 
-                // 2) за секој id земи task, па земи "другиот корисник"
-                ids.forEach { taskId ->
-                    db.child("tasks").child(taskId)
-                        .get()
-                        .addOnSuccessListener { taskSnap ->
-                            val task = taskSnap.getValue(Task::class.java) ?: return@addOnSuccessListener
+                Log.d("ARCHIVE", "all tasks count=${snap.childrenCount}")
 
-                            // ✅ најважно: taskId секогаш = Firebase key
-                            task.taskId = taskId
+                for (c in snap.children) {
+                    val task = c.getValue(Task::class.java) ?: continue
+                    task.taskId = c.key ?: ""
 
-                            // ✅ друг корисник
-                            val otherUid = if (mode == "client") {
-                                task.assignedProviderId ?: ""
-                            } else {
-                                task.clientId
+                    Log.d(
+                        "ARCHIVE_TASK",
+                        "id=${task.taskId}, title=${task.title}, status=${task.status}, clientId=${task.clientId}, assignedProviderId=${task.assignedProviderId}"
+                    )
+
+                    if (task.status != "completed") continue
+
+                    val allowed = if (mode == "client") {
+                        task.clientId == uid
+                    } else {
+                        task.assignedProviderId == uid
+                    }
+
+                    if (!allowed) continue
+
+                    val otherUid = if (mode == "client") {
+                        task.assignedProviderId ?: ""
+                    } else {
+                        task.clientId
+                    }
+
+                    if (otherUid.isBlank()) {
+                        items.add(task to "Unknown")
+                        continue
+                    }
+
+                    db.child("users").child(otherUid).get()
+                        .addOnSuccessListener { userSnap ->
+                            val first = userSnap.child("firstName").getValue(String::class.java) ?: ""
+                            val last = userSnap.child("lastName").getValue(String::class.java) ?: ""
+                            val name = (first + " " + last).trim().ifBlank {
+                                userSnap.child("name").getValue(String::class.java)
+                                    ?: userSnap.child("email").getValue(String::class.java)
+                                    ?: "User"
                             }
 
-                            if (otherUid.isBlank()) {
-                                items.add(task to "Unknown")
-                                adapter.notifyItemInserted(items.size - 1)
-                                return@addOnSuccessListener
-                            }
+                            items.add(task to name)
+                            adapter.notifyDataSetChanged()
 
-                            db.child("users").child(otherUid)
-                                .get()
-                                .addOnSuccessListener { userSnap ->
-                                    val first = userSnap.child("firstName").getValue(String::class.java) ?: ""
-                                    val last = userSnap.child("lastName").getValue(String::class.java) ?: ""
-                                    val otherName = (first + " " + last).trim().ifBlank { "User" }
-
-                                    items.add(task to otherName)
-                                    adapter.notifyItemInserted(items.size - 1)
-                                }
+                            Log.d("ARCHIVE", "added task=${task.title} other=$name")
+                        }
+                        .addOnFailureListener {
+                            items.add(task to "User")
+                            adapter.notifyDataSetChanged()
                         }
                 }
+
+                // за случај кога otherUid е празно
+                adapter.notifyDataSetChanged()
+            }
+            .addOnFailureListener { e ->
+                Log.d("ARCHIVE", "load failed=${e.message}")
             }
     }
 }

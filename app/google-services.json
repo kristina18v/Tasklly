@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "759149195716",
+    "firebase_url": "https://tasklly-default-rtdb.firebaseio.com",
     "project_id": "tasklly",
     "storage_bucket": "tasklly.firebasestorage.app"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "759149195716-3u49tl8std6nfbok472o5vg8f8s0a4de.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tasklly",
+            "certificate_hash": "585a61138046949de9faf52868ca0f03ad9e6523"
+          }
+        },
         {
           "client_id": "759149195716-te6lctthdd0vu3s8gpggnl3s4p36f0ui.apps.googleusercontent.com",
           "client_type": 3

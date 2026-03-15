@@ -1,8 +1,6 @@
 package com.example.tasklly.ui.home.client.post
-
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.example.tasklly.data.model.Task
 import com.example.tasklly.databinding.ActivityPostTaskBinding
 import com.example.tasklly.util.BaseActivity
@@ -26,11 +24,11 @@ class PostTaskActivity :  BaseActivity() {
     private fun postTask() {
         val user = auth.currentUser
         if (user == null) {
-            toast("Мора да сте најавени")
+            toast("You must be logged in.")
             return
         }
         if (user.isAnonymous) {
-            toast("Како гостин не можеш да објавуваш задачи")
+            toast("As a guest, you are not allowed to post tasks.")
             return
         }
 
@@ -43,12 +41,12 @@ class PostTaskActivity :  BaseActivity() {
         val budget = b.etBudget.text.toString().trim().toDoubleOrNull()
 
         if (title.isEmpty() || desc.isEmpty() || category.isEmpty() || location.isEmpty() || budget == null) {
-            toast("Пополнете ги сите полиња")
+            toast("Please fill in all fields.")
             return
         }
 
         val taskId = db.child("tasks").push().key ?: run {
-            toast("Неуспешно креирање taskId")
+            toast("Failed to generate task ID.")
             return
         }
 
@@ -56,7 +54,7 @@ class PostTaskActivity :  BaseActivity() {
             taskId = taskId,
             clientId = uid,
             title = title,
-            desc = desc,              // ✅ ВАЖНО
+            desc = desc,
             category = category,
             location = location,
             budget = budget,
@@ -66,11 +64,11 @@ class PostTaskActivity :  BaseActivity() {
 
         db.child("tasks").child(taskId).setValue(task)
             .addOnSuccessListener {
-                toast("Задачата е објавена ✅")
+                toast("The task has been posted successfully.")
                 finish()
             }
             .addOnFailureListener { e ->
-                toast(e.message ?: "Грешка при објава")
+                toast(e.message ?: "Error while posting the task.")
             }
     }
 

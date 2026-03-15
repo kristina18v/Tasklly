@@ -5,5 +5,6 @@ data class ChatPreview(
     var otherUserId: String = "",
     var otherName: String = "",
     var lastMessage: String = "",
-    var lastTimestamp: Long = 0L
+    var lastTimestamp: Long = 0L,
+    var unread: Boolean = false
 )

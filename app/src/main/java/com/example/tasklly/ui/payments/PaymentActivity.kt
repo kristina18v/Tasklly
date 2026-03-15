@@ -26,7 +26,7 @@ class PaymentActivity : AppCompatActivity() {
         orderId = intent.getStringExtra("orderId") ?: run { finish(); return }
         paymentUrl = intent.getStringExtra("paymentUrl") ?: run { finish(); return }
 
-        // Ако сакаш: прочитај amount од order и прикажи
+
         db.child("orders").child(orderId).child("amount").get().addOnSuccessListener {
             val amount = it.getValue(Double::class.java) ?: 0.0
             b.tvAmount.text = "Amount: €%.2f".format(amount)
@@ -41,7 +41,7 @@ class PaymentActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // запиши ги во order (не е картичка, безбедно е)
+
             val updates = mapOf(
                 "payerFirstName" to first,
                 "payerLastName" to last

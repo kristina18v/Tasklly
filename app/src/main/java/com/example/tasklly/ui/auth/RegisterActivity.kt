@@ -82,8 +82,8 @@ class RegisterActivity :  BaseActivity() {
                 // users/{uid} во Realtime Database
                 db.child("users").child(uid).setValue(userMap)
                     .addOnSuccessListener {
-                        toast("Успешна регистрација ✅")
-                        // ✅ директно на Login
+                        toast("Registration successful ✅")
+
                         startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
                         finish()
                     }

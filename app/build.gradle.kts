@@ -50,13 +50,15 @@ dependencies {
 
     // Firebase BOM
     implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
-    implementation("com.google.firebase:firebase-auth")
-    implementation("com.google.firebase:firebase-database")
+    implementation("com.google.firebase:firebase-auth-ktx")
+    implementation("com.google.firebase:firebase-database-ktx")
+    // Firebase Analytics
+    implementation("com.google.firebase:firebase-analytics-ktx")
 
     // Google Sign-In
     implementation("com.google.android.gms:play-services-auth:21.2.0")
 
-    // optional (може да останат)
+
     implementation(libs.androidx.credentials)
     implementation(libs.androidx.credentials.play.services.auth)
     implementation(libs.googleid)

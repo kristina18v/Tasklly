@@ -107,8 +107,6 @@ class ClientProfileFragment : Fragment(R.layout.fragment_profile_client) {
 
     private fun uploadAvatar(uri: Uri) {
         val uid = auth.currentUser?.uid ?: return
-
-        // show instantly (nice UX)
         Glide.with(requireContext())
             .load(uri)
             .placeholder(R.drawable.ic_profile_placeholder)

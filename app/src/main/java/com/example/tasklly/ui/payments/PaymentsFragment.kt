@@ -51,7 +51,6 @@ class PaymentsFragment : Fragment(R.layout.fragment_payments) {
             return
         }
 
-        // ✅ IMPORTANT: query само за мои orders (инаку rules ќе блокираат)
         queryRef = db.child("orders")
             .orderByChild("clientId")
             .equalTo(uid)

@@ -4,83 +4,146 @@
     android:id="@+id/scroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_screen"
     android:fillViewport="true"
     android:overScrollMode="never"
-    android:background="@drawable/bg_screen">
+    android:scrollbars="none">
 
     <LinearLayout
         android:id="@+id/root"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="18dp">
 
-        <!-- HERO CARD -->
+        <!-- TOP HEADER CARD -->
         <LinearLayout
             android:id="@+id/heroCard"
             android:layout_width="match_parent"
-            android:layout_height="358dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/bg_card"
             android:orientation="vertical"
-            android:padding="22dp">
+            android:padding="20dp">
 
-            <TextView
-                android:id="@+id/tvWelcome"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Welcome 👋"
-                android:textColor="@color/text_primary"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tvHeroSubtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Post a task and receive offers from trusted providers."
-                android:textColor="@color/text_secondary"
-                android:textSize="15sp" />
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
-            <!-- DECORATIVE AREA -->
+                    <TextView
+                        android:id="@+id/tvGreeting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hello,"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvUserName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Kristina "
+                        android:textColor="@color/text_primary"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvHeroSubtitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Manage your tasks, review offers and track your activity in one place."
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:background="@drawable/bg_status_chip"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/ivHeroIcon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@android:drawable/ic_menu_my_calendar"
+                        app:tint="@color/primary" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- SMALL INFO CARD -->
             <LinearLayout
                 android:id="@+id/decorArea"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="12dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg_hero_decor"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_card_soft"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
 
-                <ImageView
-                    android:id="@+id/ivHeroIcon"
+                <LinearLayout
                     android:layout_width="44dp"
                     android:layout_height="44dp"
-                    android:src="@android:drawable/ic_menu_send"
-                    app:tint="@color/primary" />
+                    android:background="@drawable/bg_status_chip"
+                    android:gravity="center">
 
-                <TextView
-                    android:id="@+id/tvHeroTip"
-                    android:layout_width="wrap_content"
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@android:drawable/ic_menu_send"
+                        app:tint="@color/primary" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="Describe it • set a budget • get offers"
-                    android:textColor="@color/text_secondary"
-                    android:textSize="13sp" />
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvHeroTipTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ready to post something new?"
+                        android:textColor="@color/text_primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvHeroTip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Describe it, set a budget and receive offers from providers."
+                        android:textColor="@color/text_secondary"
+                        android:textSize="13sp" />
+                </LinearLayout>
             </LinearLayout>
 
             <Button
                 android:id="@+id/btnPostTask"
                 android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:layout_marginTop="12dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/bg_button_primary"
                 android:backgroundTint="@null"
                 android:text="Post a task"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
-                android:textSize="17sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -89,41 +152,77 @@
             android:id="@+id/tvQuickActions"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="22dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="12dp"
             android:text="Quick actions"
             android:textColor="@color/text_primary"
-            android:textSize="16sp"
+            android:textSize="17sp"
             android:textStyle="bold" />
 
         <LinearLayout
-            android:id="@+id/rowActions"
+            android:id="@+id/rowActionsTop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button
+            <LinearLayout
                 android:id="@+id/btnMyTasks"
                 android:layout_width="0dp"
-                android:layout_height="52dp"
+                android:layout_height="90dp"
                 android:layout_weight="1"
-                android:background="@drawable/bg_button_outline"
-                android:backgroundTint="@null"
-                android:text="My tasks"
-                android:textAllCaps="false"
-                android:textColor="@color/primary" />
+                android:background="@drawable/bg_card"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="12dp">
 
-            <Button
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@android:drawable/ic_menu_agenda"
+                    app:tint="@color/primary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="My tasks"
+                    android:textColor="@color/text_primary"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/btnOffers"
                 android:layout_width="0dp"
-                android:layout_height="52dp"
+                android:layout_height="90dp"
                 android:layout_weight="1"
                 android:layout_marginStart="12dp"
-                android:background="@drawable/bg_button_outline"
-                android:backgroundTint="@null"
-                android:text="Offers"
-                android:textAllCaps="false"
-                android:textColor="@color/primary" />
+                android:background="@drawable/bg_card"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@android:drawable/ic_menu_info_details"
+                    app:tint="@color/primary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Offers"
+                    android:textColor="@color/text_primary"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
         </LinearLayout>
 
         <!-- OVERVIEW -->
@@ -132,10 +231,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="12dp"
             android:text="Overview"
             android:textColor="@color/text_primary"
-            android:textSize="16sp"
+            android:textSize="17sp"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -144,13 +243,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <!-- Open -->
             <LinearLayout
                 android:id="@+id/cardOpen"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:layout_weight="1"
                 android:background="@drawable/bg_card"
+                android:gravity="center_vertical"
                 android:orientation="vertical"
                 android:padding="16dp">
 
@@ -159,27 +258,28 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
-                    android:textColor="@color/text_primary"
-                    android:textSize="22sp"
+                    android:textColor="@color/primary"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvOpenLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="6dp"
                     android:text="Open"
-                    android:textColor="@color/text_secondary" />
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
             </LinearLayout>
 
-            <!-- In progress -->
             <LinearLayout
                 android:id="@+id/cardProgress"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:layout_weight="1"
                 android:layout_marginStart="12dp"
                 android:background="@drawable/bg_card"
+                android:gravity="center_vertical"
                 android:orientation="vertical"
                 android:padding="16dp">
 
@@ -189,26 +289,27 @@
                     android:layout_height="wrap_content"
                     android:text="0"
                     android:textColor="@color/text_primary"
-                    android:textSize="22sp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvInProgressLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="6dp"
                     android:text="In progress"
-                    android:textColor="@color/text_secondary" />
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
             </LinearLayout>
 
-            <!-- Completed -->
             <LinearLayout
                 android:id="@+id/cardCompleted"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:layout_weight="1"
                 android:layout_marginStart="12dp"
                 android:background="@drawable/bg_card"
+                android:gravity="center_vertical"
                 android:orientation="vertical"
                 android:padding="16dp">
 
@@ -218,39 +319,56 @@
                     android:layout_height="wrap_content"
                     android:text="0"
                     android:textColor="@color/text_primary"
-                    android:textSize="22sp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvCompletedLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="6dp"
                     android:text="Completed"
-                    android:textColor="@color/text_secondary" />
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
             </LinearLayout>
-
         </LinearLayout>
 
-        <!-- RECENT -->
+        <!-- RECENT TASKS -->
         <LinearLayout
             android:id="@+id/cardRecent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:layout_marginBottom="18dp"
             android:background="@drawable/bg_card"
-            android:gravity="center_horizontal"
             android:orientation="vertical"
             android:padding="18dp">
 
-            <TextView
-                android:id="@+id/tvRecentTitle"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Recent tasks"
-                android:textColor="@color/text_primary"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvRecentTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Recent tasks"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvSeeAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="See all"
+                    android:textColor="@color/primary"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/tvRecentHint"
@@ -260,6 +378,53 @@
                 android:text="Your latest posted tasks will appear here."
                 android:textColor="@color/text_secondary"
                 android:textSize="13sp" />
+
+            <LinearLayout
+                android:id="@+id/layoutEmptyRecent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingTop="14dp"
+                android:paddingBottom="8dp">
+
+                <ImageView
+                    android:id="@+id/ivEmptyRecent"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@android:drawable/ic_menu_agenda"
+                    app:tint="@color/text_secondary" />
+
+                <TextView
+                    android:id="@+id/tvEmptyRecentTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="No tasks yet"
+                    android:textColor="@color/text_primary"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvEmptyRecentSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="Post your first task and it will appear here."
+                    android:textColor="@color/text_secondary"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvRecentTasks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:nestedScrollingEnabled="false"
+                android:visibility="gone" />
+
         </LinearLayout>
 
     </LinearLayout>

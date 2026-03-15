@@ -26,7 +26,6 @@ class ClientOffersFragment : Fragment(R.layout.fragment_list) {
     private val items = mutableListOf<Pair<Task, Application>>()
     private lateinit var adapter: ClientOffersAdapter
 
-    // ✅ твој Stripe payment link
     private val paymentUrl = "https://buy.stripe.com/test_14A6oH2734jMa3ib918N200"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -83,10 +82,7 @@ class ClientOffersFragment : Fragment(R.layout.fragment_list) {
             })
     }
 
-    /**
-     * ✅ Accept offer + create Order (so da se pojavi vo Payments tab)
-     * ✅ Ne pravi duplikat order ako veke postoi za taskId + providerId
-     */
+
     private fun acceptAndCreateOrder(task: Task, app: Application) {
         val clientId = auth.currentUser?.uid ?: return
 

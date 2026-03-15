@@ -23,9 +23,15 @@
         </activity>
 
         <!-- Auth -->
-        <activity android:name=".ui.auth.LoginActivity" android:exported="false" />
-        <activity android:name=".ui.auth.RegisterActivity" android:exported="false" />
-        <activity android:name=".ui.auth.PhoneAuthActivity" android:exported="false" />
+        <activity
+            android:name=".ui.auth.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.auth.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.auth.PhoneAuthActivity"
+            android:exported="false" />
 
         <!-- Homes -->
         <activity
@@ -52,12 +58,7 @@
             android:name=".ui.home.provider.task.ProviderTaskDetailsActivity"
             android:exported="false" />
 
-        <!-- ✅ Payments -->
-        <activity
-            android:name=".ui.payments.PaymentActivity"
-            android:exported="false" />
-
-
+        <!-- Common screens -->
         <activity
             android:name=".ui.common.profile.EditProfileActivity"
             android:exported="false" />
@@ -72,6 +73,11 @@
 
         <activity
             android:name=".ui.common.settings.ChangePasswordActivity"
+            android:exported="false" />
+
+        <!-- Payments -->
+        <activity
+            android:name=".ui.payments.PaymentActivity"
             android:exported="false" />
 
         <!-- Messages -->

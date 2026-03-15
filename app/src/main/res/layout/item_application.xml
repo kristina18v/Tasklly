@@ -60,6 +60,47 @@
             android:textColor="@color/blue_primary" />
     </LinearLayout>
 
+    <!-- ✅ RATING ROW (НОВО) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <RatingBar
+            android:id="@+id/rbProvider"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="0.5"
+            android:isIndicator="true" />
+
+        <TextView
+            android:id="@+id/tvRatingInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="4.6 (18)"
+            android:textSize="13sp"
+            android:textColor="#6B7280" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/btnViewReviews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View reviews"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:textColor="@color/blue_primary" />
+    </LinearLayout>
+
     <!-- MESSAGE TEXT -->
     <TextView
         android:id="@+id/tvMsg"
@@ -116,6 +157,7 @@
             app:strokeWidth="1dp"
             app:strokeColor="@color/outline_blue"
             app:backgroundTint="@android:color/transparent" />
+
     </LinearLayout>
 
 </LinearLayout>

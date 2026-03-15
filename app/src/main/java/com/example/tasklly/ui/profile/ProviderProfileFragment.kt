@@ -60,7 +60,7 @@ class ProviderProfileFragment : Fragment(R.layout.fragment_profile_provider) {
         imgAvatar.setOnClickListener { pickImage.launch("image/*") }
         btnChangePhoto.setOnClickListener { pickImage.launch("image/*") }
 
-        // Live read profile (name + photoUrl)
+
         db.child("users").child(uid)
             .addValueEventListener(object : com.google.firebase.database.ValueEventListener {
                 override fun onDataChange(snapshot: com.google.firebase.database.DataSnapshot) {

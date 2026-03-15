@@ -3,6 +3,7 @@ package com.example.tasklly.ui.home.client.task
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tasklly.R
@@ -52,14 +53,42 @@ class ClientMyTasksFragment : Fragment(R.layout.fragment_list) {
 
         listener = q.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+
                 items.clear()
+
+                var openCount = 0
+                var acceptedCount = 0
+
                 for (s in snapshot.children) {
                     val t = s.getValue(Task::class.java)
-                    if (t != null) items.add(t)
+                    if (t != null) {
+                        items.add(t)
+
+                        when (t.status) {
+                            "open" -> openCount++
+                            "accepted" -> acceptedCount++
+                        }
+                    }
                 }
-                // newest first
+
                 items.sortByDescending { it.createdAt }
                 adapter.notifyDataSetChanged()
+
+                // ✅ Update stats cards (from fragment_list.xml)
+                val cardOpenView = b.root.findViewById<View>(R.id.cardOpen)
+                val cardAcceptedView = b.root.findViewById<View>(R.id.cardAccepted)
+
+                val openLabel = cardOpenView.findViewById<TextView>(R.id.tvStatLabel)
+                val openValue = cardOpenView.findViewById<TextView>(R.id.tvStatValue)
+
+                val accLabel = cardAcceptedView.findViewById<TextView>(R.id.tvStatLabel)
+                val accValue = cardAcceptedView.findViewById<TextView>(R.id.tvStatValue)
+
+                openLabel.text = "Open"
+                accLabel.text = "Accepted"
+
+                openValue.text = openCount.toString()
+                accValue.text = acceptedCount.toString()
             }
 
             override fun onCancelled(error: DatabaseError) {}
